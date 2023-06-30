@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+      /* Customize the Bootstrap theme */
+      :root {
+        --bs-primary: #654321; /* Set primary color to a dark brown shade */
+        --bs-success: #006400; /* Set success color to a dark green shade */
+        --bs-light: #ccddbb; /* Set light color to a light green shade */
+        --bs-white: #eeddcc; /* Set white color to a light brown shade */
+      }
+    </style>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+       <title>t.Shortnr</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+<body>
+    
+
+
+     <header class="header--item__url">
+           <div class="logo">
+               <a href="/" class="">
+                <h1>t.Shortnr</h1>   
+              </a>
+           </div>
+            <!-- Desktop Button -->
+              <div class="btn">
+             <form  action="/auth/logout" method="get">
+              <button class="logout">Logout</button>
+            </form>
+         </div>
+        
+            </header>
+        
+         <div class="container">
+        <form action="/url/shortUrls" method="POST" class="my-4 form-inline">
+          <label for="fullUrl" class="sr-only">Enter Full URL here...</label>
+          <input required placeholder="Full URL" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
+          <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+      
+         <table class="table table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Full URL</th>
+              <th>Short URL</th>
+              <th>QR Codes</th> 
+              <th>Clicks</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <% shortUrls.forEach((shortUrl) => { %>
+              <tr>
+                <td><a href="<%= shortUrl.fullUrl %>" target="_blank"><%= shortUrl.fullUrl %></a></td>
+                <td><a href="/url/<%= shortUrl.short %>" target="_blank"><%= shortUrl.short %>.ik</a></td>
+                <td>
+                  <a href="/qrcodes/<%= shortUrl.short %>.png" target="_blank" download>
+                    <img src="qr-code.png"  alt="QR Code" style="width: 100px; height: 100px;"> 
+                    <!-- <img src="/qrcodes/<%= shortUrl.short %>.png" alt="QR Code" style="width: 100px; height: 100px;"> -->
+                  </a>
+                </td>
+                <td><%= shortUrl.clicks %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+
+      
+
+    
+</body>
+</html>

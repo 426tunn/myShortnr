@@ -1,0 +1,59 @@
+<div class="header">
+     <header class="header--item">
+        <div class="logo">
+            <a href="/" class="">
+             <h1>t.Shortnr</h1>
+            </a>
+        </div>
+
+        <div class="navbaritem">
+        <ul class="item">
+            <h2><a href="/">HOME</a></h2>
+        </ul>
+
+        <!-- Desktop Button -->
+       <div class="btn">
+        <form action="/enter" method="get" target="_blank">
+          <button class="login">Login</button>
+        </form>
+       
+        <form  action="/create" method="get" target="_blank">
+          <button class="sign">Sign up</button>
+        </form>
+      </div>
+      </div>
+
+           <!-- Mobile Menu -->
+           <div class="navbaritem--mobile">
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <svg width="20" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M20 12v2H0v-2h20zm0-6v2H0V6h20zm0-6v2H0V0h20z" fill="black" fill-rule="evenodd"/></svg>
+           </a>
+            <div class="itemslist" id="hamburger"> 
+              <ul class="item--mobile">
+                <li><a href="/">Home</a></li>
+              </ul>
+              <div class="btn--mobile">
+                <form action="/enter" method="get" target="_blank">
+                  <button class="login">Login</button>
+                </form>
+                 <form  action="/create" method="get" target="_blank">
+                  <button class="sign">Signup</button>
+                </form>
+                </div>
+              </div>
+              </div>
+                 
+        </header>
+      </div>
+
+   <script>
+    function myFunction() {
+      var x = document.getElementById("hamburger");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+    </script>
+    

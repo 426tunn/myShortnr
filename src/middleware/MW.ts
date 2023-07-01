@@ -14,8 +14,8 @@ export const validateUserMW = async (
   ) => {
     try {  
       const token = req.cookies.jwt;
-      if (!token) {
-        return res.status(401).send({ message: 'Unauthorized' });
+      if (!token) { 
+        return res.redirect('/create');
       }
   
   

@@ -9,6 +9,10 @@
     "start:dev": "nodemon dist/app.js",
     "start": "node dist/app.js"
   },
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.0.0 <17.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -46,6 +50,8 @@
     "redis": "^4.6.7",
     "shortid": "^2.2.16",
     "supertest": "^6.3.3",
+    "swagger-jsdoc": "5.0.1",
+    "swagger-ui-express": "^4.6.3",
     "winston": "^3.9.0"
   }
 }

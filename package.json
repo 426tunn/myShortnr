@@ -7,8 +7,7 @@
     "build": "tsc",
     "test": "jest --detectOpenHandles",
     "start:dev": "nodemon dist/app.js",
-  
-    "start": "tsc --watch & node dist/app.js"
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",

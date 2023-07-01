@@ -5,8 +5,10 @@ import logger from './Logger/logger';
 import userRouter from './routes/userRoute';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './db';
-
+// import swaggerjsdoc, {Options} from 'swagger-jsdoc'
+// import swaggerui from 'swagger-ui-express'
 import { Config } from './envConfig/config';  
+
 
 const app = express();
 const PORT = Config.PORT; // Replace with your desired port number
@@ -22,6 +24,30 @@ const limiter = rateLimit({
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
   headers: true, // Return rate limit info in the `RateLimit-*` headers
 });
+
+//  const options: Options = {
+//     definition: {
+//       info: {
+//         title: "API Documentation",
+//         version: "1.0.0",
+//         description: "API documentation using Swagger",
+//       },
+//       openai: "3.0.0",
+//       servers: [
+//         {
+//           url: "http://localhost:3020"
+//         },
+//       ],
+//     },
+//     apis: ["./routes/*.ts"]
+// }
+
+
+// const spacs =swaggerjsdoc(options)
+// app.use('api-doc',
+// swaggerui.serve,
+// swaggerui.setup(spacs)
+// )
 
 app.use(limiter);
 

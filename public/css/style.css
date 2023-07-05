@@ -114,6 +114,15 @@ a{
     width:40%;
     
 }
+
+.homee {
+    margin-top: 10px;
+    display: flex;
+    text-decoration: none;
+   font-size: larger;
+}
+
+
 h1{
     text-align: center;
     color: rgb(68, 46, 5);

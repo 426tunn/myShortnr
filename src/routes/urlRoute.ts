@@ -6,6 +6,7 @@ const router = express.Router();
 
 
 router.get('/', validateUserMW, getShortUrls); 
+// router.get('useer-transaction-history',  validateUserMW)
 router.post('/shortUrls', validateUserMW, createShortUrl);
 router.get('/:shortUrl', validateUserMW, redirectToFullUrl);
 router.get('/generateqrcode', generateQRCode);

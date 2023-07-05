@@ -6,9 +6,10 @@ import userRouter from './routes/userRoute';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './db';
 import swaggerjsdoc, {Options} from 'swagger-jsdoc'
-import swaggerui from 'swagger-ui-express'
+import swaggerUi from 'swagger-ui-express'
 import { Config } from './envConfig/config';  
-
+import * as fs from 'fs';
+import * as path from 'path';
 
 const app = express();
 const PORT = Config.PORT; // Replace with your desired port number
@@ -25,34 +26,15 @@ const limiter = rateLimit({
   headers: true, // Return rate limit info in the `RateLimit-*` headers
 });
 
- const options: Options = {
-    definition: {
-      info: {
-        title: "API Documentation",
-        version: "1.0.0",
-        description: "API documentation using Swagger",
-      },
-      openai: "3.0.0",
-      servers: [
-        {
-          url: "http://localhost:3020"
-        },
-      ],
-    },
-    apis: ["./routes/*.ts"]
-}
-
-
-const spacs =swaggerjsdoc(options)
-app.use('api-doc',
-swaggerui.serve,
-swaggerui.setup(spacs)
-)
+const newSwag = JSON.parse(
+ fs.readFileSync(path.join(__dirname, "./swagger-output.json"), "utf8")
+);
 
 app.use(limiter);
 
 app.use('/url', router);   
 app.use('/auth', userRouter);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(newSwag, {explorer: true}))
  
 app.get('/', (req: Request, res: Response) => {
   res.render('index'); 
